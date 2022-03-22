@@ -4,7 +4,7 @@ from arsenic import services, browsers, get_session, keys
 
 
 class ArsenicApi:
-    def __init__(self, loop, path_to_driver):
+    def __init__(self, loop):
         self.loop = loop
         self.GECKODRIVER = '../data/chromedriver'
 
