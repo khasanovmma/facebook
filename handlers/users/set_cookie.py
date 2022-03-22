@@ -16,7 +16,7 @@ async def send_data(message: types.Message):
             login = await session.wait_for_element(5, 'input[name=email]')
             password = await session.wait_for_element(5, 'input[name=pass]')
             await login.send_keys('+998977730074')
-            await password.send_keys('A6516519a')
+            await password.send_keys('A65165199a')
             await password.send_keys(keys.ENTER)
             await asyncio.sleep(10)
             data = await session.get_all_cookies()
