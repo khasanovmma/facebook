@@ -14,7 +14,7 @@ async def send_data(message: types.Message):
     url = message.text
     chat_id = message.from_user.id
     message_id = message.message_id + 1
-    message_id_2 = message.message_id + 1
+    message_id_2 = message.message_id + 2
 
     await message.answer_sticker(sticker_id)
     await message.answer('Пожалуйста подождите😊. Это займет пару минут ⏱.')
