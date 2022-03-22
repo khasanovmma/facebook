@@ -51,6 +51,7 @@ async def send_data(message: types.Message):
                 if new_height == last_height:
 
                     html = await session.get_page_source()
+                    print(html)
                     soup = bs4.BeautifulSoup(html, 'html.parser')
                     blocks_div = '.rq0escxv.l9j0dhe7.du4w35lb.hybvsw6c.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.k4urcfbm.ni8dbmo4.stjgntxs.sbcfpzgs'
                     blocks = soup.select(blocks_div)
