@@ -10,4 +10,4 @@ bot = Bot(token=config.BOT_TOKEN, parse_mode=types.ParseMode.HTML)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
-chrome_driver = ArsenicApi(loop)
+chrome_driver = ArsenicApi(loop, config.path_to_driver)
