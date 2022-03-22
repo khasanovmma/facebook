@@ -35,6 +35,7 @@ async def send_data(message: types.Message):
                                              secure=item['secure'],
                                              httponly=item['httpOnly'])
 
+            await asyncio.sleep(10)
             await session.get(url)
 
             last_height = session.execute_script("return document.body.scrollHeight")
