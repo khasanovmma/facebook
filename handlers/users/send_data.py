@@ -25,7 +25,7 @@ async def send_data(message: types.Message):
 
     await message.answer_sticker(done_sticker_id)
     await message.reply('Список пройден ✅✅✅')
-    await bot.send_sticker(ADMINS[0], 'Список пройден ✅✅✅')
+    await bot.send_message(ADMINS[0], 'Список пройден ✅✅✅')
 
 
 async def send(country, number, message: types.Message):
