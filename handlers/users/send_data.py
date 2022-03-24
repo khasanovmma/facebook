@@ -29,7 +29,7 @@ async def send_data(message: types.Message):
 async def send(country, number, message: types.Message):
     chat_id = message.from_user.id
     url = 'https://www.facebook.com/groups/search/groups/?q=' + country
-    message_id = message.message_id + 1
+    message_id_1 = message.message_id + 1
     message_id_2 = message.message_id + 2
     await message.answer_sticker(wait_sticker_id)
     await message.answer('Пожалуйста подождите😊. Это займет пару минут ⏱.')
@@ -141,7 +141,7 @@ async def send(country, number, message: types.Message):
                 last_height = new_height
 
         await message.reply_document(open(f'{BASE_DIR}/{number}){country}.xlsx', 'rb'))
-        await bot.delete_message(chat_id, message_id)
+        await bot.delete_message(chat_id, message_id_1)
         await bot.delete_message(chat_id, message_id_2)
         await asyncio.sleep(5)
         os.remove(f'{BASE_DIR}/{number}){country}.xlsx')
