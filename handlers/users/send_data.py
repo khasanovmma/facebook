@@ -63,15 +63,15 @@ async def send(country, number, message: types.Message):
                     title.append(block.select_one('.nc684nl6 > a > span').get_text())
                     link.append(block.select_one('.nc684nl6 > a')['href'])
                     if block.select_one(
-                            '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)'):
+                            '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.b0tq1wua.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)'):
                         if len(block.select_one(
-                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
+                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.b0tq1wua.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
                             ' · ')) > 1:
                             info.append(block.select_one(
-                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
+                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.b0tq1wua.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
                                 ' · ')[0])
                             count_people.append(block.select_one(
-                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
+                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.b0tq1wua.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
                                 ' · ')[1])
                         elif len(block.select_one(
                                 '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.b0tq1wua.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
