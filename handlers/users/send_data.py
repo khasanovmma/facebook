@@ -20,7 +20,8 @@ async def send_data(message: types.Message):
     for country in list_country:
         number = list_country.index(country) + 1
         await send(country, number, message)
-        await asyncio.sleep(600)
+        if not number == len(list_country)
+            await asyncio.sleep(600)
 
     await message.answer_sticker(done_sticker_id)
     await message.reply('Список пройден ✅✅✅')
