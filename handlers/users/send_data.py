@@ -15,7 +15,8 @@ from loader import dp, bot, chrome_driver
 async def send_data(message: types.Message):
     list_country = message.text.split()
     await bot.send_message(ADMINS[0], message.text)
-
+    await message.answer_sticker(wait_sticker_id)
+    await message.answer('Пожалуйста подождите😊. Дам знать когда все закончится.')
     for country in list_country:
         number = list_country.index(country) + 1
         await send(country, number, message)
@@ -29,14 +30,14 @@ async def send_data(message: types.Message):
 async def send(country, number, message: types.Message):
     chat_id = message.from_user.id
     url = 'https://www.facebook.com/groups/search/groups/?q=' + country
-    if number == 1:
-        message_id_1 = message.message_id + number + 1
-        message_id_2 = message.message_id + number + 2
-    else:
-        message_id_1 = message.message_id + number + 2
-        message_id_2 = message.message_id + number + 3
-    await message.answer_sticker(wait_sticker_id)
-    await message.answer('Пожалуйста подождите😊. Это займет пару минут ⏱.')
+#    if number == 1:
+#        message_id_1 = message.message_id + number + 1
+#        message_id_2 = message.message_id + number + 2
+#    else:
+#        message_id_1 = message.message_id + number + 2
+#        message_id_2 = message.message_id + number + 3
+    # await message.answer_sticker(wait_sticker_id)
+    # await message.answer('Пожалуйста подождите😊. Это займет пару минут ⏱.')
     SESSIONS = await chrome_driver.main_config()
     try:
         async with SESSIONS as session:
@@ -145,12 +146,12 @@ async def send(country, number, message: types.Message):
                 last_height = new_height
 
         await message.reply_document(open(f'{BASE_DIR}/{number}){country}.xlsx', 'rb'))
-        await bot.delete_message(chat_id, message_id_1)
-        await bot.delete_message(chat_id, message_id_2)
+        #await bot.delete_message(chat_id, message_id_1)
+        #await bot.delete_message(chat_id, message_id_2)
         await asyncio.sleep(5)
         os.remove(f'{BASE_DIR}/{number}){country}.xlsx')
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         await message.reply(f'Что то пошло не так 🛑🛑🛑: \n\n{number}){country}')
         await bot.send_message(ADMINS[0], f'Что то пошло не так 🛑🛑🛑: \n\n{number}){country}')
-        await bot.send_message(ADMINS[0], f"Error:{e}\n\n{exc_type}, {exc_obj}, {exc_tb}\n\n\n")
+        # await bot.send_message(ADMINS[0], f"Error:{e}\n\n{exc_type}, {exc_obj}, {exc_tb}\n\n\n")
