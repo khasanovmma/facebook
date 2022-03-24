@@ -57,76 +57,75 @@ async def send(country, number, message: types.Message):
                 blocks_div = '.rq0escxv.l9j0dhe7.du4w35lb.hybvsw6c.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.k4urcfbm.ni8dbmo4.stjgntxs.sbcfpzgs'
                 blocks = soup.select(blocks_div)
                 title, link, info, count_people, desc, published = [], [], [], [], [], []
-                with open('html.txt', 'w', encoding='utf-8') as file:
-                    file.write(str(blocks[0]))
-                # for block in blocks:
-                #
-                #     title.append(block.select_one('.nc684nl6 > a > span').get_text())
-                #     link.append(block.select_one('.nc684nl6 > a')['href'])
-                #     if block.select_one(
-                #             '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)'):
-                #         if len(block.select_one(
-                #                 '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
-                #             ' · ')) > 1:
-                #             info.append(block.select_one(
-                #                 '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
-                #                 ' · ')[0])
-                #             count_people.append(block.select_one(
-                #                 '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
-                #                 ' · ')[1])
-                #         elif len(block.select_one(
-                #                 '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
-                #             ' · ')) == 1:
-                #             info.append(block.select_one(
-                #                 '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
-                #                 ' · ')[0])
-                #             count_people.append('Нет данных')
-                #     else:
-                #         info.append('Нет данных')
-                #         count_people.append('Нет данных')
-                #
-                #     if len(block.select('.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7')) == 1:
-                #         desc.append('Нет данных')
-                #
-                #     else:
-                #         try:
-                #             desc.append(
-                #                 block.select_one(
-                #                     '.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7').get_text())
-                #         except Exception as e:
-                #             desc.append('Нет данных')
-                #     try:
-                #         if len(block.select('.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7')) > 1:
-                #             published.append(
-                #                 block.select('.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7')[
-                #                     1].get_text())
-                #         else:
-                #             if len(block.select_one(
-                #                     '.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7').get_text()) > 33:
-                #                 index_desc = blocks.index(block)
-                #                 desc[index_desc] = block.select_one(
-                #                     '.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7').get_text()
-                #                 published.append('Нет данных')
-                #             else:
-                #
-                #                 published.append(
-                #                     block.select_one(
-                #                         '.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7').get_text())
-                #     except Exception as e:
-                #         published.append('Нет данных')
-                #
-                # excel_file = pd.DataFrame({
-                #     'Название группы': title,
-                #     'Ссылка группы': link,
-                #     'Статус группы': info,
-                #     'Количество участников': count_people,
-                #     'Описания группы': desc,
-                #     'Информация о публикации': published
-                # })
-                # excel_file.to_excel(f'{number}){country}.xlsx', sheet_name='information', index=False),
+
+                for block in blocks:
+
+                    title.append(block.select_one('.nc684nl6 > a > span').get_text())
+                    link.append(block.select_one('.nc684nl6 > a')['href'])
+                    if block.select_one(
+                            '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)'):
+                        if len(block.select_one(
+                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
+                            ' · ')) > 1:
+                            info.append(block.select_one(
+                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
+                                ' · ')[0])
+                            count_people.append(block.select_one(
+                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
+                                ' · ')[1])
+                        elif len(block.select_one(
+                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.b0tq1wua.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
+                            ' · ')) == 1:
+                            info.append(block.select_one(
+                                '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.b0tq1wua.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
+                                ' · ')[0])
+                            count_people.append('Нет данных')
+                    else:
+                        info.append('Нет данных')
+                        count_people.append('Нет данных')
+
+                    if len(block.select('.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7')) == 1:
+                        desc.append('Нет данных')
+
+                    else:
+                        try:
+                            desc.append(
+                                block.select_one(
+                                    '.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7').get_text())
+                        except Exception as e:
+                            desc.append('Нет данных')
+                    try:
+                        if len(block.select('.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7')) > 1:
+                            published.append(
+                                block.select('.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7')[
+                                    1].get_text())
+                        else:
+                            if len(block.select_one(
+                                    '.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7').get_text()) > 33:
+                                index_desc = blocks.index(block)
+                                desc[index_desc] = block.select_one(
+                                    '.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7').get_text()
+                                published.append('Нет данных')
+                            else:
+
+                                published.append(
+                                    block.select_one(
+                                        '.jktsbyx5 > span > .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7').get_text())
+                    except Exception as e:
+                        published.append('Нет данных')
+
+                excel_file = pd.DataFrame({
+                    'Название группы': title,
+                    'Ссылка группы': link,
+                    'Статус группы': info,
+                    'Количество участников': count_people,
+                    'Описания группы': desc,
+                    'Информация о публикации': published
+                })
+                excel_file.to_excel(f'{number}){country}.xlsx', sheet_name='information', index=False),
 
                 break
 
             last_height = new_height
 
-    await message.reply_document(open('html.txt', 'rb'))
+    await message.reply_document(open(f'{number}){country}.xlsx', 'rb'))
