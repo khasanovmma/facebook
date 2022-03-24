@@ -61,8 +61,8 @@ async def send(country, number, message: types.Message):
                 for block in blocks:
                     title.append(block.select_one('.nc684nl6 > a > span').get_text())
                     link.append(block.select_one('.nc684nl6 > a')['href'])
-                    if len(block.select_one(
-                            '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)')):
+                    if block.select_one(
+                            '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)'):
                         if len(block.select_one(
                                 '.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.e9vueds3.j5wam9gi.b1v8xokw.m9osqain:not(.hzawbc8m)').get_text().split(
                             ' · ')) > 1:
