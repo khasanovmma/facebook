@@ -30,7 +30,7 @@ async def send(country, number, message: types.Message):
     chat_id = message.from_user.id
     url = 'https://www.facebook.com/groups/search/groups/?q=' + country
     message_id_1 = message.message_id + number
-    message_id_2 = message.message_id + number +2
+    message_id_2 = message.message_id + number + 1
     await message.answer_sticker(wait_sticker_id)
     await message.answer('Пожалуйста подождите😊. Это займет пару минут ⏱.')
     SESSIONS = await chrome_driver.main_config()
