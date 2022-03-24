@@ -22,7 +22,7 @@ async def send_data(message: types.Message):
         await send(country, number, message)
         await asyncio.sleep(600)
 
-    await bot.send_sticker(done_sticker_id)
+    await message.answer_sticker(done_sticker_id)
     await message.reply('Список пройден ✅✅✅')
     await bot.send_sticker(ADMINS[0], 'Список пройден ✅✅✅')
 
