@@ -7,7 +7,7 @@ import bs4
 import pandas as pd
 from aiogram import types
 
-from data.config import wait_sticker_id, done_sticker_id, ADMINS
+from data.config import wait_sticker_id, done_sticker_id, ADMINS, BASE_DIR
 from loader import dp, bot, chrome_driver
 
 
@@ -133,18 +133,18 @@ async def send(country, number, message: types.Message):
                         'Описания группы': desc,
                         'Информация о публикации': published
                     })
-                    excel_file.to_excel(f'result_parsing/{number}){country}.xlsx', sheet_name='information',
+                    excel_file.to_excel(f'{number}){country}.xlsx', sheet_name='information',
                                         index=False),
 
                     break
 
                 last_height = new_height
 
-        await message.reply_document(open(f'result_parsing/{number}){country}.xlsx', 'rb'))
+        await message.reply_document(open(f'{BASE_DIR}/{number}){country}.xlsx', 'rb'))
         await bot.delete_message(chat_id, message_id)
         await bot.delete_message(chat_id, message_id_2)
         await asyncio.sleep(5)
-        os.remove(f'result_parsing/{number}){country}.xlsx')
+        os.remove(f'{BASE_DIR}/{number}){country}.xlsx')
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         await message.reply(f'Что то пошло не так 🛑🛑🛑: \n\n{number}){country}')
