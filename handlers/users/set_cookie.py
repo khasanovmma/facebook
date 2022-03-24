@@ -11,7 +11,7 @@ async def send_data(message: types.Message):
     SESSIONS = await chrome_driver.main_config()
     try:
         async with SESSIONS as session:
-            await session.get('https://www.facebook.com/groups/search/groups/?q=berlin')
+            await session.get('https://www.facebook.com/')
             await asyncio.sleep(5)
             login = await session.wait_for_element(5, 'input[name=email]')
             password = await session.wait_for_element(5, 'input[name=pass]')
