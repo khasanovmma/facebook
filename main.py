@@ -4,12 +4,20 @@
 # places = graph.search(type='group', fields='Berlin')
 #
 # print(places)
-from facepy import GraphAPI
+import os
+import sys
 
-graph = GraphAPI('EAAJ1ls7S6TgBACrSvIRNWvuzffZAxIESXcnQ3oULrBkM8xsjDZBDkkDCWQNEYBA7gb4aLbYO283YarshkwEQQgLEC4SDhoPCpthTVl5urFIlgZAIgnD8CxctuqZALZCblbytSwjbZBMsyDHZCRNsZCVnuI37giEYCjySL7dy4G50fyTBJ56iDtfoGSN2nTuDuYY9mtgrNzpD3NksTU4j3NlMyTOwjaI00aWPGMwIiZAVcCxO6XiLvbAES04t03asP9r0ZD')
+try:
+    from facepy import GraphAPI
 
-search_result = graph.get('https://www.facebook.com/rf')
-print(search_result)
+    graph = GraphAPI('EAAJ1ls7S6TgBACrSvIRNWvuzffZAxIESXcnQ3oULrBkM8xsjDZBDkkDCWQNEYBA7gb4aLbYO283YarshkwEQQgLEC4SDhoPCpthTVl5urFIlgZAIgnD8CxctuqZALZCblbytSwjbZBMsyDHZCRNsZCVnuI37giEYCjySL7dy4G50fyTBJ56iDtfoGSN2nTuDuYY9mtgrNzpD3NksTU4j3NlMyTOwjaI00aWPGMwIiZAVcCxO6XiLvbAES04t03asP9r0ZD')
+
+    search_result = graph.get('https://www.facebook.com/rf')
+    print(search_result)
+except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+    print(exc_type, fname, exc_tb.tb_lineno)
 
 
 # from facebooktoken import FacebookTokenRefresher

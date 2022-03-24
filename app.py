@@ -2,7 +2,8 @@ from aiogram import executor
 
 import logging
 
-from loader import dp
+
+from loader import dp, bot
 import middlewares, filters, handlers
 from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
