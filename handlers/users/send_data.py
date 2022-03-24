@@ -16,11 +16,11 @@ async def send_data(message: types.Message):
     list_country = message.text.split()
     await bot.send_message(ADMINS[0], message.text)
     await message.answer_sticker(wait_sticker_id)
-    await message.answer('Пожалуйста подождите😊. Дам знать когда все закончится.')
+    await message.answer('Пожалуйста подождите😊. Уведомлю когда все закончится.')
     for country in list_country:
         number = list_country.index(country) + 1
         await send(country, number, message)
-        await asyncio.sleep(10)
+        await asyncio.sleep(600)
 
     await bot.send_sticker(done_sticker_id)
     await message.reply('Список пройден ✅✅✅')
