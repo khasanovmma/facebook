@@ -14,9 +14,9 @@ async def send_data(message: types.Message):
     list_country = message.text.split()
 
     for country in list_country:
-        number = list_country.index(country) + 41
+        number = list_country.index(country) + 1
         await send(country, number, message)
-        await asyncio.sleep(450)
+        await asyncio.sleep(600)
 
 
 async def send(country, number, message: types.Message):
@@ -25,8 +25,8 @@ async def send(country, number, message: types.Message):
     SESSIONS = await chrome_driver.main_config()
     try:
         async with SESSIONS as session:
-            await session.get(url)
-            await asyncio.sleep(1)
+            await session.get("https://www.facebook.com/")
+            await asyncio.sleep(3)
 
             with open('cookies.json') as file:
                 data = json.load(file)
@@ -39,7 +39,7 @@ async def send(country, number, message: types.Message):
                                              httponly=item['httpOnly'])
 
             await session.get(url)
-
+            await asyncio.sleep(10)
             last_height = session.execute_script("return document.body.scrollHeight")
 
             while True:
