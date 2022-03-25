@@ -14,6 +14,7 @@ from loader import dp, bot, chrome_driver
 @dp.message_handler()
 async def send_data(message: types.Message):
     print(message)
+    await asyncio.sleep(1000)
     list_country = message.text.split('/n')
     await bot.send_message(ADMINS[0], message.text)
     await message.answer_sticker(wait_sticker_id)
