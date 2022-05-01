@@ -117,7 +117,6 @@ async def send(country, number, message: types.Message):
             last_height = new_height
 
     await message.reply_document(open(f'{BASE_DIR}/{number}){country}.xlsx', 'rb'))
-    await message.reply_document(open(f'{BASE_DIR}/index.txt', 'rb'))
     # await bot.delete_message(chat_id, message_id_1)
     # await bot.delete_message(chat_id, message_id_2)
     await asyncio.sleep(5)
