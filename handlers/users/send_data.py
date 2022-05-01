@@ -124,4 +124,4 @@ async def send(country, number, message: types.Message):
     # await bot.delete_message(chat_id, message_id_2)
     await asyncio.sleep(5)
     os.remove(f'{BASE_DIR}/{number}){country}.xlsx')
-    os.remove(f'{BASE_DIR}/index.txt')
+    # os.remove(f'{BASE_DIR}/index.txt')
