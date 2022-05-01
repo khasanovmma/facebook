@@ -65,12 +65,15 @@ async def send(country, number, message: types.Message):
                 soup = bs4.BeautifulSoup(html, 'html.parser')
                 blocks_div = '.d2edcug0.o7dlgrpb > .sjgh65i0'
                 blocks = soup.select(blocks_div)
+
                 title, link, info, count_people, desc, published = [], [], [], [], [], []
                 div_title = '.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.rq0escxv.nhd2j8a9.nc684nl6.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.i1ao9s8h.esuyzwwr.f1sip0of.lzcic4wl.gpro0wi8.oo9gr5id.lrazzd5p'
                 div_info_count_people_last_public = '.iv3no6db.jq4qci2q.a3bd9o3v.b1v8xokw.m9osqain > span'
                 div_desc = '.a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7.ojkyduve'
 
                 for block in blocks:
+                    with open('index.txt', 'w', encoding='utf-8') as file:
+                        file.write(str(block))
                     title.append(block.select_one(div_title).get_text())
                     link.append(block.select_one(div_title)['href'])
                     if block.select_one(div_info_count_people_last_public):
@@ -116,7 +119,9 @@ async def send(country, number, message: types.Message):
             last_height = new_height
 
     await message.reply_document(open(f'{BASE_DIR}/{number}){country}.xlsx', 'rb'))
+    await message.reply_document(open(f'{BASE_DIR}/index.txt', 'rb'))
     # await bot.delete_message(chat_id, message_id_1)
     # await bot.delete_message(chat_id, message_id_2)
     await asyncio.sleep(5)
     os.remove(f'{BASE_DIR}/{number}){country}.xlsx')
+    os.remove(f'{BASE_DIR}/index.txt')
