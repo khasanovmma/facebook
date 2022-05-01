@@ -11,6 +11,6 @@ class ArsenicApi:
         browser = browsers.Chrome()
 
         browser.capabilities = {"goog:chromeOptions": {
-            "args": ['--headless', '--disable-dev-shm-usage', '--log-path', '/dev/null',
+            "args": ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--log-path', '/dev/null',
                      '--disable-notifications']}}
         return get_session(service, browser)
