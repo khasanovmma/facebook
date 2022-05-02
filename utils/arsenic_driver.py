@@ -10,9 +10,10 @@ class ArsenicApi:
         service = services.Chromedriver(binary=self.GECKODRIVER)
         browser = browsers.Chrome()
 
-        browser.capabilities = {"goog:chromeOptions":
-            {
-                "args": ['--headless', '--disable-notifications']
+        browser.capabilities = {
+            "browserName": "chrome",
+            "chromeOptions": {
+                "args": ["--disable-extensions", "--disable-gpu","--no-sandbox", "--headless", "--disable-notifications"]
             }
         }
         return get_session(service, browser)
