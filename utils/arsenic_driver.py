@@ -8,10 +8,11 @@ class ArsenicApi:
 
     async def main_config(self):
         service = services.Chromedriver(binary=self.GECKODRIVER)
-        browser = browsers.Chrome(chromeOptions={
-            "args": ['--disable-notifications', '--headless']
-        })
+        browser = browsers.Chrome()
 
-        # browser.capabilities = {"goog:chromeOptions": {
-        #     }}
+        browser.capabilities = {"goog:chromeOptions":
+            {
+                "args": ['--headless', '--disable-notifications']
+            }
+        }
         return get_session(service, browser)
