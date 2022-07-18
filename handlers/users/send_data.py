@@ -63,6 +63,14 @@ async def send(country, number, message: types.Message):
                 if new_height == last_height:
 
                     html = await session.get_page_source()
+                    with open('page.html', 'w', encoding="utf-8") as file:
+                        file.write(html)
+                    await message.reply_document(open(f'{BASE_DIR}/page.html', 'rb'))
+                    # await bot.delete_message(chat_id, message_id_1)
+                    # await bot.delete_message(chat_id, message_id_2)
+                    await asyncio.sleep(5)
+                    os.remove(f'{BASE_DIR}/page.html')
+
                     soup = bs4.BeautifulSoup(html, 'html.parser')
                     blocks_div = '.d2edcug0.o7dlgrpb > .sjgh65i0'
                     blocks = soup.select(blocks_div)
