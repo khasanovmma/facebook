@@ -37,6 +37,7 @@ async def send(country, number, message: types.Message):
     await asyncio.sleep(1)
     try:
         async with SESSIONS as session:
+            await asyncio.sleep(3)
             await session.get("https://www.facebook.com/")
             await asyncio.sleep(3)
 
