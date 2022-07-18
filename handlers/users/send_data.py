@@ -14,8 +14,8 @@ from loader import dp, bot, chrome_driver
 async def send_data(message: types.Message):
     list_country = message.text.split('\n')
     await bot.send_message(ADMINS[0], message.text + '\n\n' + message.from_user.username if message.from_user.username else 'None')
-    await message.answer_sticker(wait_sticker_id)
-    await message.answer('Пожалуйста подождите😊. Уведомлю когда все закончится.')
+    sticker_msg = await message.answer_sticker(wait_sticker_id)
+    msg =await message.answer('Пожалуйста подождите😊. Уведомлю когда все закончится.')
     for country in list_country:
         number = list_country.index(country) + 1
         await send(country, number, message)
@@ -23,6 +23,8 @@ async def send_data(message: types.Message):
             await asyncio.sleep(600)
 
     await message.answer_sticker(done_sticker_id)
+    await sticker_msg.delete()
+    await msg.delete()
     await message.reply('Список пройден ✅✅✅')
     await bot.send_message(ADMINS[0], 'Список пройден ✅✅✅')
 
@@ -63,11 +65,7 @@ async def send(country, number, message: types.Message):
                 if new_height == last_height:
 
                     html = await session.get_page_source()
-                    with open('page.html', 'w', encoding="utf-8") as file:
-                        file.write(html)
-                    await message.reply_document(open(f'{BASE_DIR}/page.html', 'rb'))
-                    # await bot.delete_message(chat_id, message_id_1)
-                    # await bot.delete_message(chat_id, message_id_2)
+
                     await asyncio.sleep(5)
                     os.remove(f'{BASE_DIR}/page.html')
 
@@ -126,8 +124,6 @@ async def send(country, number, message: types.Message):
                 last_height = new_height
 
         await message.reply_document(open(f'{BASE_DIR}/{number}){country}.xlsx', 'rb'))
-        # await bot.delete_message(chat_id, message_id_1)
-        # await bot.delete_message(chat_id, message_id_2)
         await asyncio.sleep(5)
         os.remove(f'{BASE_DIR}/{number}){country}.xlsx')
     except Exception as e:
