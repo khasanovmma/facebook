@@ -8,8 +8,8 @@ from loader import dp, bot, chrome_driver
 
 @dp.message_handler(commands='cookie')
 async def send_data(message: types.Message):
-    SESSIONS = await chrome_driver.main_config()
     try:
+        SESSIONS = await chrome_driver.main_config()
         async with SESSIONS as session:
             await session.get('https://www.facebook.com/')
             await asyncio.sleep(5)

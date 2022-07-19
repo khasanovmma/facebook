@@ -15,10 +15,10 @@ async def send_data(message: types.Message):
     list_country = message.text.split('\n')
     await bot.send_message(ADMINS[0], message.text + '\n\n' + message.from_user.username if message.from_user.username else 'None')
     sticker_msg = await message.answer_sticker(wait_sticker_id)
-    msg =await message.answer('Пожалуйста подождите😊. Уведомлю когда все закончится.')
+    msg = await message.answer('Пожалуйста подождите😊. Уведомлю когда все закончится.')
     for country in list_country:
         number = list_country.index(country) + 1
-        await send(country, number, message)
+        send(country, number, message)
         if not number == len(list_country):
             await asyncio.sleep(600)
 
@@ -29,8 +29,7 @@ async def send_data(message: types.Message):
     await bot.send_message(ADMINS[0], 'Список пройден ✅✅✅')
 
 
-async def send(country, number, message: types.Message):
-    chat_id = message.from_user.id
+def send(country, number, message: types.Message):
     url = 'https://www.facebook.com/groups/search/groups/?q=' + country
 
     try:
