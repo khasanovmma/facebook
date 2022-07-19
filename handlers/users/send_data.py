@@ -33,9 +33,8 @@ async def send(country, number, message: types.Message):
     chat_id = message.from_user.id
     url = 'https://www.facebook.com/groups/search/groups/?q=' + country
 
-    SESSIONS = await chrome_driver.main_config()
-    await asyncio.sleep(1)
     try:
+        SESSIONS = await chrome_driver.main_config()
         async with SESSIONS as session:
             await asyncio.sleep(3)
             await session.get("https://www.facebook.com/")
