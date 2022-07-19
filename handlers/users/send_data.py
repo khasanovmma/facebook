@@ -32,8 +32,8 @@ async def send_data(message: types.Message):
 def send(country, number, message: types.Message):
     url = 'https://www.facebook.com/groups/search/groups/?q=' + country
 
+    SESSIONS = await chrome_driver.main_config()
     try:
-        SESSIONS = await chrome_driver.main_config()
         async with SESSIONS as session:
             await asyncio.sleep(3)
             await session.get("https://www.facebook.com/")
@@ -66,7 +66,6 @@ def send(country, number, message: types.Message):
                     html = await session.get_page_source()
 
                     await asyncio.sleep(5)
-                    os.remove(f'{BASE_DIR}/page.html')
 
                     soup = bs4.BeautifulSoup(html, 'html.parser')
                     blocks_div = '.d2edcug0.o7dlgrpb > .sjgh65i0'
